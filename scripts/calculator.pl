@@ -15,28 +15,32 @@ my $num2 = <STDIN>;
 chomp $num2;
 
 # Проверка на числовой ввод
-unless ($num1 =~ /^\d+$/) {
+unless ( $num1 =~ /^\d+$/ ) {
     die "Ошибка: '$num1' не является числом\n";
 }
 
-unless ($num2 =~ /^\d+$/) {
+unless ( $num2 =~ /^\d+$/ ) {
     die "Ошибка: '$num2' не является числом\n";
 }
 
 my $result;
-if ($operator eq "+") {
+if ( $operator eq "+" ) {
     $result = $num1 + $num2;
-} elsif ($operator eq "-") {
+}
+elsif ( $operator eq "-" ) {
     $result = $num1 - $num2;
-} elsif ($operator eq "*") {
+}
+elsif ( $operator eq "*" ) {
     $result = $num1 * $num2;
-} elsif ($operator eq "/") {
+}
+elsif ( $operator eq "/" ) {
     # Проверка деления на ноль
-    if ($num2 == 0) {
+    if ( $num2 == 0 ) {
         die "Ошибка: Деление на ноль\n";
     }
     $result = $num1 / $num2;
-} else {
+}
+else {
     die "Ошибка: Неверный оператор\n";
 }
 

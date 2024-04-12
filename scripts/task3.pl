@@ -11,10 +11,10 @@ my %users_prms = (
 # Получаем имя пользователя
 print "Enter for username: ";
 my $user_name = <STDIN>;
-chomp($user_name); # Убираем символ перевода строки
+chomp( $user_name ); # Убираем символ перевода строки
 
 # Проверяем, существует ли введёное имя пользователя в хеше
-if (exists $users_prms{$user_name}) {
+if ( exists $users_prms{$user_name} ) {
     print "Welcome, $user_name!\n";
     print "Your password: " . $users_prms{$user_name} . "\n";
 }
