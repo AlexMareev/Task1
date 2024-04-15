@@ -37,7 +37,7 @@ sub count_and_sort_words {
     my @sorted_words = sort { $word_count{$b} <=> $word_count{$a} || $a cmp $b } keys %word_count;
     @sorted_words = grep { $word_count{$_} > 2 } @sorted_words; # Изменено здесь
 
-    return (\@sorted_words, \%word_count);
+    return ( \@sorted_words, \%word_count );
 }
 
 # Функция для проверки текста на наличие неприличных слов
@@ -82,19 +82,20 @@ close( $fh );
 $file_content =~ s/-\n//g;
 
 # 1) Считаем количество слов в тексте
-my $word_count = count_words($file_content);
+my $word_count = count_words( $file_content );
 print "В тексте найдено $word_count слов\n";
 
 # 2) Считаем и выводим слова, которые повторяются более 2 раз
-my ($sorted_words_ref, $word_count_ref) = count_and_sort_words($file_content);
+my ( $sorted_words_ref, $word_count_ref ) = count_and_sort_words( $file_content );
 my @sorted_words = @$sorted_words_ref;
 my %word_count = %$word_count_ref;
-if (@sorted_words) {
+if ( @sorted_words ) {
     print "Слова, повторяющиеся более 2 раз:\n";
-    foreach my $word (@sorted_words) {
+    foreach my $word ( @sorted_words ) {
         print "$word: $word_count{$word} раз\n";
     }
-} else {
+}
+else {
     print "В тексте нет слов, повторяющихся более 2 раз\n";
 }
 
