@@ -1,5 +1,6 @@
 package tools;
 
+use utf8;
 use strict;
 use warnings;
 
@@ -66,7 +67,6 @@ sub reg_user {
     }
 }
 
-
 sub rewrite_config {
     my ( $config_ref ) = @_;
 
@@ -123,14 +123,40 @@ sub check_user_passwd {
 
 sub del_user {
     my $user_name = shift;
-    my %config = read_conf($conf_path);
+    my %config = read_conf( $conf_path );
 
-    if (exists $config{$user_name}) {
+    if ( exists $config{$user_name} ) {
         delete $config{$user_name};
-        rewrite_config(\%config);
+        rewrite_config( \%config );
         print "Пользователь '$user_name' успешно удален\n";
         return 1;
-    } else {
+    }
+    else {
+        print "Пользователь с логином '$user_name' не найден\n";
+        return 0;
+    }
+}
+
+sub change_passwd {
+    my ($user_name, $new_passwd) = @_;
+    my %config = read_conf( $conf_path );
+
+    # Проверяем, существует ли пользователь
+    if ( exists $config{$user_name} ) {
+        # Проверяем, соответствует ли новый пароль требованиям сложности
+        if ( check_user_passwd( $new_passwd ) == 1 ) {
+            # Если все проверки пройдены, меняем пароль
+            $config{$user_name} = $new_passwd;
+            rewrite_config( \%config );
+            print "Пароль пользователя '$user_name' успешно изменен\n";
+            return 1;
+        }
+        else {
+            print "Новый пароль не соответствует требованиям сложности\n";
+            return 0;
+        }
+    }
+    else {
         print "Пользователь с логином '$user_name' не найден\n";
         return 0;
     }

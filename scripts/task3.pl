@@ -1,6 +1,8 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
 use warnings;
+
 # Объявляем хэш с именами и паролями
 my %users_prms = (
     "Elena"  => "111",

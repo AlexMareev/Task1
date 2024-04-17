@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 use POSIX;
 
 sub calculate_sprints {
@@ -17,4 +18,4 @@ my $b = 6;             # скорость прихода новых задач �
 
 my $sprints = calculate_sprints( $total_tasks, $a, $b );
 
-print $sprints > 0 ? "Улиточка справится за $sprints спринтов\n" : "Улиточка не справится\n";
+print $sprints > 0 ? "Улитка справится за $sprints спринтов\n" : "Улитка не справится\n";

@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 my $conf_path = 'C:/Users/1/IdeaProjects/untitled1/conf.ini';
 sub _read_conf {

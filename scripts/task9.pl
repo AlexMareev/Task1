@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 # Добавляем текущую директорию в @INC
 use FindBin qw($RealBin);
@@ -13,16 +14,18 @@ use tools;
 my $action = shift || " ";
 
 # Проверяем значение параметра
-if ($action eq 'log') {
+if ( $action eq 'log' ) {
     print "Для входа использовать функцию login\n";
-} elsif ($action eq 'reg') {
+}
+elsif ( $action eq 'reg' ) {
     # Вызываем функцию для регистрации
     my $updated_config = tools::reg_user();
-    if ($updated_config) {
-        tools::rewrite_config($updated_config);
+    if ( defined $updated_config ) {
+        tools::rewrite_config( $updated_config );
         print "Новый пользователь успешно добавлен\n";
     }
-} else {
+}
+else {
     # Если значение параметра не корректно выводим ошибку и завершаем работу скрипта
     die "Ошибка: Значение параметра 'action' не корректно. Допустимые значения: log, reg\n";
 }

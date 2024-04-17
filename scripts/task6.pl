@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 sub read_conf {
     my $file_path = shift;

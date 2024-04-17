@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 # Функция для поиска файла в директории /newsletter/
 sub find_file {
@@ -44,7 +45,7 @@ sub count_and_sort_words {
 sub check_bad_words {
     my $text = shift;
 
-    my @bad_words = qw(мат оскорбление неприличное); # Плохие слова, можно расширить список
+    my @bad_words = qw(мат оскорбление неприличное); # Можно расширить список
 
     foreach my $bad_word ( @bad_words ) {
         if ( $text =~ /\b$bad_word\b/i ) {
@@ -81,11 +82,11 @@ close( $fh );
 # Удаляем символы переноса строки
 $file_content =~ s/-\n//g;
 
-# 1) Считаем количество слов в тексте
+# Считаем количество слов в тексте
 my $word_count = count_words( $file_content );
 print "В тексте найдено $word_count слов\n";
 
-# 2) Считаем и выводим слова, которые повторяются более 2 раз
+# Считаем и выводим слова, которые повторяются более 2 раз
 my ( $sorted_words_ref, $word_count_ref ) = count_and_sort_words( $file_content );
 my @sorted_words = @$sorted_words_ref;
 my %word_count = %$word_count_ref;
@@ -100,7 +101,7 @@ else {
 }
 
 
-# 3) Проверяем текст на наличие неприличных слов
+# Проверяем текст на наличие неприличных слов
 if ( check_bad_words( $file_content ) ) {
     print "В тексте обнаружены неприличные слова\n";
 }

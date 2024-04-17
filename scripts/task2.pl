@@ -1,6 +1,8 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
 use warnings;
+
 # Объявляем массив с именами
 my @users_list = ( "Elena", "Alex", "Nikita" );
 

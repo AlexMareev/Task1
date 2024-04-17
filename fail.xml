@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+    <employee_name>Alex</employee_name>
+    <employee_position>Manager</employee_position>
+    <employee_salary>50000</employee_salary>
+    <employee_name>Tom</employee_name>
+    <employee_position>Engineer</employee_position>
+    <employee_salary>60000</employee_salary>
+    <employee_name>Mike</employee_name>
+    <employee_position>Analyst</employee_position>
+    <employee_salary>70000</employee_salary>
+</employees>

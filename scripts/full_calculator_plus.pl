@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 sub evaluate_expression {
     my ( $num1, $operator, $num2 ) = @_;

@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+use utf8;
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 #Создаём массив
 my @array = ( 9, 5, 7, 1, 8, 3, 6, 10, 4, 2 );
