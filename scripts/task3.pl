@@ -13,7 +13,7 @@ my %users_prms = (
 # Получаем имя пользователя
 print "Enter for username: ";
 my $user_name = <STDIN>;
-chomp( $user_name ); # Убираем символ перевода строки
+chomp( $user_name );
 
 # Проверяем, существует ли введёное имя пользователя в хеше
 if ( exists $users_prms{$user_name} ) {

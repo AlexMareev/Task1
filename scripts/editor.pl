@@ -1,9 +1,8 @@
 #!/usr/bin/perl
-use utf8;
 use strict;
 use warnings;
 
-# Функция для поиска файла в директории /newsletter/
+# Поиск файла в директории /newsletter/
 sub find_file {
     my $file_name = shift;
 
@@ -18,7 +17,7 @@ sub find_file {
     }
 }
 
-# Функция для подсчета слов в тексте
+# Подсчет слов в тексте
 sub count_words {
     my $text = shift;
 
@@ -26,7 +25,7 @@ sub count_words {
     return scalar @words;
 }
 
-# Функция для подсчета повторяющихся слов и их вывода в порядке убывания
+# Подсчет повторяющихся слов и их вывода в порядке убывания
 sub count_and_sort_words {
     my $text = shift;
 
@@ -36,19 +35,19 @@ sub count_and_sort_words {
     }
 
     my @sorted_words = sort { $word_count{$b} <=> $word_count{$a} || $a cmp $b } keys %word_count;
-    @sorted_words = grep { $word_count{$_} > 2 } @sorted_words; # Изменено здесь
+    @sorted_words = grep { $word_count{$_} > 2 } @sorted_words;
 
     return ( \@sorted_words, \%word_count );
 }
 
-# Функция для проверки текста на наличие неприличных слов
+# Проверка текста на наличие неприличных слов
 sub check_bad_words {
     my $text = shift;
 
-    my @bad_words = qw(мат оскорбление неприличное); # Можно расширить список
+    my @bad_words = qw(мат оскорбление неприличное); #Слова можно расширить список
 
     foreach my $bad_word ( @bad_words ) {
-        if ( $text =~ /\b$bad_word\b/i ) {
+        if ( $text =~ /\p{L}*?$bad_word\p{L}*?/i ) {
             return 1; # Найдено неприличное слово
         }
     }
@@ -56,7 +55,6 @@ sub check_bad_words {
     return 0; # Неприличных слов не найдено
 }
 
-# Главная программа
 
 # Проверяем, передан ли аргумент командной строки (название файла)
 unless ( @ARGV ) {
@@ -101,7 +99,7 @@ else {
 }
 
 
-# Проверяем текст на наличие неприличных слов
+# 3) Проверяем текст на наличие неприличных слов
 if ( check_bad_words( $file_content ) ) {
     print "В тексте обнаружены неприличные слова\n";
 }

@@ -138,7 +138,7 @@ sub del_user {
 }
 
 sub change_passwd {
-    my ($user_name, $new_passwd) = @_;
+    my ( $user_name, $new_passwd ) = @_;
     my %config = read_conf( $conf_path );
 
     # Проверяем, существует ли пользователь

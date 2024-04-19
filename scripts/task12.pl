@@ -3,10 +3,6 @@ use utf8;
 use strict;
 use warnings;
 
-#!/usr/bin/perl
-use strict;
-use warnings FATAL => 'all';
-
 # Добавляем текущую директорию в @INC
 use FindBin qw($RealBin);
 use lib $RealBin;
@@ -15,7 +11,7 @@ use lib $RealBin;
 use tools;
 
 # Проверяем количество аргументов
-if (@ARGV == 0 || @ARGV == 1) {
+if ( @ARGV == 0 || @ARGV == 1 ) {
     print "######################################################\n";
     print "#back_end.pl usage\n";
     print "# action=reg user_name=NAME user_passwd=PASSWD ./task12.pl - registration new user in system;\n";
